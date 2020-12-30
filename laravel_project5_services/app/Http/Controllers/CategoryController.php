@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\createCategoryRequest;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+//        $categories = Category::all();
+        $categories = Category::orderByDesc('cat_id')->get();
+        return view("dashboard.categories.create_category", compact("categories"));
     }
 
     /**
@@ -24,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view("dashboard/categories/create_category");
     }
 
     /**
@@ -33,9 +36,26 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(createCategoryRequest $request)
     {
-        //
+        if ($request->hasFile('cat_image')) {
+            $file = $request->file('cat_image') ;
+            $ext = $file->getClientOriginalExtension() ;
+            $filename = time() . '.' . $ext ;
+            $file->move('images', $filename);
+        } else {
+            $filename = "defaultImage.png";
+        }
+        Category::create( [
+            "cat_name"        =>$request->cat_name,
+            "cat_desc"        =>$request->cat_desc,
+            "cat_image"       =>$filename,
+        ]);
+        return redirect("/categories");
+
+        // this method will not be effective in uploading image
+//        Category::create($request->all());
+//        return redirect("/categories" );
     }
 
     /**
@@ -55,9 +75,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('dashboard/categories/edit_category' , compact('category'));
     }
 
     /**
@@ -67,9 +88,28 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(createCategoryRequest $request, $id)
     {
-        //
+        if ($request->hasFile('cat_image')) {
+            $file = $request->file('cat_image') ;
+            $ext = $file->getClientOriginalExtension() ;
+            $filename = time() . '.' . $ext ;
+            $file->move('images', $filename);
+        }
+        else {
+            $filename = Category::find($id)->cat_image;
+        }
+        Category::findOrFail($id)->update( [
+            "cat_name"        =>$request->cat_name,
+            "cat_desc"        =>$request->cat_desc,
+            "cat_image"       =>$filename,
+        ]);
+        return redirect("/categories");
+
+// this method will not be effective in uploading image
+//        $category = Category::findOrFail($id);
+//        $category->update($request->all());
+//        return redirect("/categories");
     }
 
     /**
@@ -78,8 +118,9 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        Category::findOrFail($id)->delete();
+        return redirect("/categories");
     }
 }

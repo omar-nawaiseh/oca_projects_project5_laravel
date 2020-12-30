@@ -22,6 +22,12 @@ Route::get('/hi', function () {
 Route::get('/haaa', function () {
     return view('web.index');
 });
+Route::get('categories', function () {
+    return view('/dashboard/category');
+});
+
+Route::resource("/categories", "categoryController");
+
 
 
 Auth::routes();
