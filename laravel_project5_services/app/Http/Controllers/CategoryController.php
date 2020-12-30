@@ -43,8 +43,6 @@ class CategoryController extends Controller
             $ext = $file->getClientOriginalExtension() ;
             $filename = time() . '.' . $ext ;
             $file->move('images', $filename);
-        } else {
-            $filename = "defaultImage.png";
         }
         Category::create( [
             "cat_name"        =>$request->cat_name,

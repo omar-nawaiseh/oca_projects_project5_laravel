@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Seeker;
+use App\Admin_role;
 use Illuminate\Http\Request;
 
-class SeekerController extends Controller
+class AdminRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SeekerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Seeker  $seeker
+     * @param  \App\Admin_role  $admin_role
      * @return \Illuminate\Http\Response
      */
-    public function show(Seeker $seeker)
+    public function show(Admin_role $admin_role)
     {
         //
     }
@@ -52,10 +52,10 @@ class SeekerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Seeker  $seeker
+     * @param  \App\Admin_role  $admin_role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Seeker $seeker)
+    public function edit(Admin_role $admin_role)
     {
         //
     }
@@ -64,10 +64,10 @@ class SeekerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Seeker  $seeker
+     * @param  \App\Admin_role  $admin_role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seeker $seeker)
+    public function update(Request $request, Admin_role $admin_role)
     {
         //
     }
@@ -75,10 +75,10 @@ class SeekerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Seeker  $seeker
+     * @param  \App\Admin_role  $admin_role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seeker $seeker)
+    public function destroy(Admin_role $admin_role)
     {
         //
     }

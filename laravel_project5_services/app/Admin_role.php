@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Seeker extends Model
+class Admin_role extends Model
 {
-    protected $primaryKey ="seeker_id";
+    //
 }
