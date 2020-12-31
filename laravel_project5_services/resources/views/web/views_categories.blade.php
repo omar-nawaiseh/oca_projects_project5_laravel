@@ -1,10 +1,10 @@
 @extends('layouts.inner')
 
 @section('main')
-<section id="service" class="services-area">
+    <section id="service" class="services-area">
         <div class="container">
             
-        <div class="row justify-content-center">
+            <div class="row justify-content-center">
                 
 
                 <div class="col-lg-4 col-md-7 col-sm-9">

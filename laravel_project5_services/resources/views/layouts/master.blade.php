@@ -30,16 +30,10 @@
                      </a>
                  </div>
                  <ul class="nav">
-                     <li class="nav-item active">
+                     <li class="nav-item ">
                          <a class="nav-link" href="{{URL::asset('/admin')}}">
-                             <i class="nc-icon nc-chart-pie-35"></i>
+                         <i class="nc-icon nc-circle-09"></i>
                              <p>Admin</p>
-                         </a>
-                     </li>
-                     <li>
-                         <a class="nav-link" href="...">
-                             <i class="nc-icon nc-circle-09"></i>
-                             <p>2</p>
                          </a>
                      </li>
                      <li>
@@ -49,29 +43,24 @@
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="...">
+                         <a class="nav-link" href="{{URL::asset('House_Cleaning')}}">
+                         <i class="nc-icon nc-paper-2"></i>
+                             <p>User House Cleaning </p>
+                         </a>
+                     </li>
+                     <li>
+                         <a class="nav-link" href="{{URL::asset('Health_Care')}}">
                              <i class="nc-icon nc-paper-2"></i>
-                             <p>4</p>
+                             <p>User Health Care</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="...">
-                             <i class="nc-icon nc-atom"></i>
-                             <p>5</p>
+                         <a class="nav-link" href="{{URL::asset('Childcare')}}">
+                         <i class="nc-icon nc-paper-2"></i>
+                             <p>User Childcare</p>
                          </a>
                      </li>
-                     <li>
-                         <a class="nav-link" href="...">
-                             <i class="nc-icon nc-pin-3"></i>
-                             <p>6</p>
-                         </a>
-                     </li>
-                     <li>
-                         <a class="nav-link" href="...">
-                             <i class="nc-icon nc-bell-55"></i>
-                             <p>7</p>
-                         </a>
-                     </li>
+                    
                      
                  </ul>
              </div>
