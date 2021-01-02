@@ -8,15 +8,28 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+//  public function test(){
+//     $category = Category::find(2);
+//     $y= $category->applicants;
+//     foreach($y as $key => $val){
+//         echo "<br>";
+//        return  $val->applicant_name;
+
+//     };
+//  }
     public function index()
     {
 //        $categories = Category::all();
-        $categories = Category::orderByDesc('cat_id')->get();
+        $categories = Category::orderByDesc('id')->get();
         return view("dashboard.categories.create_category", compact("categories"));
     }
 
@@ -42,7 +55,7 @@ class CategoryController extends Controller
             $file = $request->file('cat_image') ;
             $ext = $file->getClientOriginalExtension() ;
             $filename = time() . '.' . $ext ;
-            $file->move('images', $filename);
+            $file->move('category_images', $filename);
         }
         Category::create( [
             "cat_name"        =>$request->cat_name,
@@ -62,10 +75,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
-    {
-        //
-    }
+//    public function show(Category $category)
+//    {
+//        //
+//    }
 
     /**
      * Show the form for editing the specified resource.
@@ -92,7 +105,7 @@ class CategoryController extends Controller
             $file = $request->file('cat_image') ;
             $ext = $file->getClientOriginalExtension() ;
             $filename = time() . '.' . $ext ;
-            $file->move('images', $filename);
+            $file->move('category_images', $filename);
         }
         else {
             $filename = Category::find($id)->cat_image;
@@ -121,4 +134,50 @@ class CategoryController extends Controller
         Category::findOrFail($id)->delete();
         return redirect("/categories");
     }
+
+    public function showCat(Category $category)
+    {
+        $categories = Category::all();
+
+        return view('web.views_categories',compact('categories'));
+    }
+
+
+
+    public function singlecategory(Category $category, $id)
+    {
+        $applicants = Category::find($id);
+        $specific_applicants= $applicants->applicants;
+        // return $specific_applicants;
+
+        return view('web.singlecategory',compact('specific_applicants'));
+
+    }
+    public function choose_category_form()
+    {
+        $categories = Category::all();
+        // dd($categories);
+        return view('dashboard.categories.choose_category_form',compact('categories'));
+
+    }
+    public function single_category_table(Request $request)
+    {
+        $select_category = $request->select_category;
+        $applicants =Category::find($select_category);
+        $category_all_applicants=$applicants->applicants;
+        return view('dashboard.categories.single_category_table',compact('category_all_applicants'));
+    }
+
+
+///testing, list all applicants that has category id equals 1
+// public function testing()
+// {
+//     $applicants = Category::find(1);
+//     $specific_applicants= $applicants->applicants;
+//     // return $specific_applicants;
+//     return view('','');
+//     }
+
+     
+
 }

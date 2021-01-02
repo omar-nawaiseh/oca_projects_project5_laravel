@@ -22,7 +22,7 @@
  <body>
      <div class="wrapper">
          <div class="sidebar" data-image="{{URL::asset('dashoard/img/sidebar-5.jpg')}}">
-        
+
              <div class="sidebar-wrapper">
                  <div class="logo">
                      <a href="   " class="simple-text">
@@ -43,6 +43,12 @@
                          </a>
                      </li>
                      <li>
+                        <a class="nav-link" href="{{URL::asset('choose_category_form')}}">
+                            <i class="nc-icon nc-notes"></i>
+                            <p>Choose Category</p>
+                        </a>
+                    </li>
+                     {{-- <li>
                          <a class="nav-link" href="{{URL::asset('House_Cleaning')}}">
                          <i class="nc-icon nc-paper-2"></i>
                              <p>User House Cleaning </p>
@@ -59,9 +65,9 @@
                          <i class="nc-icon nc-paper-2"></i>
                              <p>User Childcare</p>
                          </a>
-                     </li>
-                    
-                     
+                     </li> --}}
+
+
                  </ul>
              </div>
          </div>
@@ -69,14 +75,23 @@
              <!-- Navbar -->
              <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                  <div class="container-fluid">
-                     
-                     
+
+
                      <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                         
+
                          <ul class="navbar-nav ml-auto">
                              <li class="nav-item">
                                  <a class="nav-link" href="#pablo">
-                                     <span class="no-icon">Log out</span>
+{{--                                     <span class="no-icon">Log out</span>--}}
+
+                                     {{--                                     <span class="no-icon">--}}
+
+                                     {{--                                         @if (session('status'))--}}
+                                     {{--                                             <div class="alert alert-success" role="alert">--}}
+                                     {{--                                         {{ session('status') }}--}}
+                                     {{--                                     </div>--}}
+                                     {{--                                         @endif--}}
+                                     {{--                                     </span>--}}
                                  </a>
                              </li>
                          </ul>
@@ -94,13 +109,13 @@
                         @yield('main')
 
 
-                        
+
                      </div>
                  </div>
-             <footer class="footer">
+             {{-- <footer class="footer">
                  <div class="container-fluid">
                      <nav>
-                         
+
                          <p class="copyright text-center">
                              ©
                              <script>
@@ -110,10 +125,10 @@
                          </p>
                      </nav>
                  </div>
-             </footer>
+             </footer> --}}
          </div>
      </div>
-     
+
  </body>
  <!--   Core JS Files   -->
  <script src="{{URL::asset('./dashboard/js/core/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
@@ -129,6 +144,6 @@
  <script src="{{URL::asset('./dashboard/js/light-bootstrap-dashboard.js?v=2.0.0')}} " type="text/javascript"></script>
  <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
  <script src="{{URL::asset('./dashboard/js/demo.js')}}"></script>
- 
+
 
  </html>
